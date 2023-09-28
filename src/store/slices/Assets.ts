@@ -37,7 +37,7 @@ export const assetsSlice = createSlice({
 export const {setAssets, setLoading, setError} = assetsSlice.actions
 
 // LOADING ASSETS AND HANDLE PREV/NEXT PAGE
-export const loadAssets = createAsyncThunk('assets/LoadAssets', async (action: string, {getState, dispatch}) => {
+export const loadAssets = createAsyncThunk('asset/LoadAssets', async (action: string, {getState, dispatch}) => {
     const {assets: {previous, next, limit, isLoading}} = getState() as RootStore
     const isNextAction = action === 'NEXT'
     const isPreviousAction = action === 'PREV'
@@ -78,11 +78,11 @@ export const loadAssets = createAsyncThunk('assets/LoadAssets', async (action: s
     dispatch(setLoading(false))
 })
 
-export const loadNextAssets = createAsyncThunk('assets/LoadNextAssets', async (action, {dispatch}) => {
+export const loadNextAssets = createAsyncThunk('asset/LoadNextAssets', async (action, {dispatch}) => {
     dispatch(loadAssets('NEXT'))
 })
 
-export const loadPreviousAssets = createAsyncThunk('assets/LoadPreviousAssets', async (action, {dispatch}) => {
+export const loadPreviousAssets = createAsyncThunk('asset/LoadPreviousAssets', async (action, {dispatch}) => {
     dispatch(loadAssets('PREV'))
 })
 
