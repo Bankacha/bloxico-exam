@@ -12,7 +12,7 @@ const routes: RouteObject[] = [
         element: <PublicLayout/>,
         children: [
             {
-                path: '/',
+                path: '',
                 element: <Landing/>
             }
         ]
@@ -22,7 +22,7 @@ const routes: RouteObject[] = [
         element: <PrivateLayout/>,
         children: [
             {
-                path: '/home',
+                path: '',
                 element: <Home/>
             },
         ]
