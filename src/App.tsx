@@ -1,8 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import openSeaApi from './api/OpenSea'
 
 function App() {
+  openSeaApi.get('/assets?limit=5').then((res) => console.log(res))
+
   return (
     <div className="App">
       <header className="App-header">
