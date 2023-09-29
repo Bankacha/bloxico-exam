@@ -9,7 +9,7 @@ interface PublicLayoutProps {
 
 const Index: FC<PublicLayoutProps> = ({ children }) => {
     return <>
-        <Navigation loggedIn={false}/>
+        <Navigation/>
         <Outlet />
     </>
 }

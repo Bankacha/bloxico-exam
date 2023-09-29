@@ -5,10 +5,11 @@ import PrivateLayout from './layout/PrivateLayout'
 import Home from './pages/Home'
 import React from 'react'
 import {RouteObject} from 'react-router'
+import ProfilePage from './pages/ProfilePage'
 
 const routes: RouteObject[] = [
     {
-        path: "/",
+        path: "",
         element: <PublicLayout/>,
         children: [
             {
@@ -18,12 +19,16 @@ const routes: RouteObject[] = [
         ]
     },
     {
-        path: "/home",
+        path: "/",
         element: <PrivateLayout/>,
         children: [
             {
-                path: '',
+                path: '/',
                 element: <Home/>
+            },
+            {
+                path: '/profile',
+                element: <ProfilePage/>,
             },
         ]
     },

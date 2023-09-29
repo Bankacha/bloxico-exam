@@ -1,6 +1,6 @@
+import DisplayAssetsContent from '../components/DisplayAssetsContent'
+
 const Home = () => {
-return(
-    <h1>Home</h1>
-)
+    return <DisplayAssetsContent />
 }
 export default Home

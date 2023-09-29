@@ -5,3 +5,4 @@ export const assetsHasNextPage = (state: RootStore): boolean => !!state.assets.n
 export const assetsHasPreviousPage = (state: RootStore): boolean => !!state.assets.previous
 export const assetsIsLoading = (state: RootStore): boolean => state.assets.isLoading
 export const assetsHasError = (state: RootStore): boolean => state.assets.hasError
+export const userLoggedIn = (state: RootStore): boolean => state.user.userLoggedIn
