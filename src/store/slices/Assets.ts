@@ -2,13 +2,6 @@ import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import openSeaApi from '../../api/OpenSea'
 import {RootStore} from '../types'
 
-// type AssetsState = {
-//     items: any[];
-//     next: string | null;
-//     previous: string | null;
-//     limit: number;
-// }
-
 export const assetsSlice = createSlice({
     name: 'assets',
     initialState: {
@@ -30,11 +23,14 @@ export const assetsSlice = createSlice({
         },
         setError: (state, action) => {
             state.hasError = action.payload
+        },
+        setlimit: (state, action) => {
+            state.limit = action.payload
         }
     },
 })
 
-export const {setAssets, setLoading, setError} = assetsSlice.actions
+export const {setAssets, setLoading, setError, setlimit} = assetsSlice.actions
 
 // LOADING ASSETS AND HANDLE PREV/NEXT PAGE
 export const loadAssets = createAsyncThunk('asset/LoadAssets', async (action: string, {getState, dispatch}) => {
@@ -84,6 +80,12 @@ export const loadNextAssets = createAsyncThunk('asset/LoadNextAssets', async (ac
 
 export const loadPreviousAssets = createAsyncThunk('asset/LoadPreviousAssets', async (action, {dispatch}) => {
     dispatch(loadAssets('PREV'))
+})
+
+// Setting pagination limit
+export const updateLimit = createAsyncThunk('asset/UpdateLimit', async (action:number, {dispatch}) => {
+    dispatch(setlimit(action))
+    dispatch(loadAssets(''))
 })
 
 export default assetsSlice.reducer

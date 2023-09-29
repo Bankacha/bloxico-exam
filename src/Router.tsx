@@ -1,4 +1,4 @@
-import {createBrowserRouter,} from 'react-router-dom'
+import {createBrowserRouter, Navigate} from 'react-router-dom'
 import PublicLayout from './layout/PublicLayout'
 import Landing from './pages/Landing'
 import PrivateLayout from './layout/PrivateLayout'
@@ -23,7 +23,7 @@ const routes: RouteObject[] = [
         element: <PrivateLayout/>,
         children: [
             {
-                path: '/',
+                path: '',
                 element: <Home/>
             },
             {
@@ -31,6 +31,10 @@ const routes: RouteObject[] = [
                 element: <ProfilePage/>,
             },
         ]
+    },
+    {
+        path: "*",
+        element: <Navigate to={'/'}/>,
     },
 ]
 

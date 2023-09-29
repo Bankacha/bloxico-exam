@@ -1,10 +1,10 @@
-import { createSlice} from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 
 export const userSlice = createSlice({
     name: 'user',
     initialState: {
         user: null,
-        userLoggedIn: false
+        userLoggedIn: !!localStorage.getItem('logged_in')
     },
     reducers: {
         setUser: (state, action) => {
@@ -17,5 +17,15 @@ export const userSlice = createSlice({
 })
 
 export const {setUser, setUserLoggedIn} = userSlice.actions
+
+export const logInUser = createAsyncThunk('users/LogInUser', async (action, {dispatch}) => {
+    localStorage.setItem('logged_in', 'true')
+    dispatch(setUserLoggedIn(true))
+})
+
+export const logOutUser = createAsyncThunk('asset/LogOutUser', async (action, {dispatch}) => {
+    localStorage.removeItem('logged_in')
+    dispatch(setUserLoggedIn(false))
+})
 
 export default userSlice.reducer

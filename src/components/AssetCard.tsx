@@ -8,7 +8,7 @@ const AssetCard: React.FC<{ title: string, imageUrl: string }> = ({title, imageU
     return (
         <>
             <Grid item xs={10} md={5} xl={2}>
-                <Card sx={{boxShadow: '5px 6px 21px 0px rgba(0,0,0,0.57)'}}>
+                <Card sx={{boxShadow: '2px 3px 21px 0px rgba(0,0,0,0.57)', borderRadius: '8px'}}>
                     <Box sx={{boxSizing: 'border-box', padding: '8px', height: '50px'}}>
                         <Typography sx={{
                             fontWeight: 600,

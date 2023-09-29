@@ -11,9 +11,14 @@ import {MetaMaskProvider} from '@metamask/sdk-react'
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 )
-
-const theme = createTheme()
-
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#69A297',
+            contrastText: "#fff"
+        },
+    },
+})
 
 root.render(
     // <React.StrictMode>
