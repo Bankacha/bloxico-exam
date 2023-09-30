@@ -1,16 +1,26 @@
 import { FC, ReactNode } from 'react'
 import {Box} from '@mui/material'
-import { Outlet } from 'react-router-dom'
+import {Navigate, Outlet} from 'react-router-dom'
+import Navigation from '../Navigation'
+import {useSelector} from 'react-redux'
+import {userLoggedIn} from '../../store/selectors'
 
 interface PrivateLayoutProps {
     children?: ReactNode;
 }
 
-const PrivateLayout: FC<PrivateLayoutProps> = ({ children }) => {
+const PrivateLayout: FC<PrivateLayoutProps> = () => {
+    const isUserLoggedIn = useSelector(userLoggedIn)
+
+    // Redirecting not logged-in users to the Home page
+    if (!isUserLoggedIn) {
+        return <Navigate to="/" />
+    }
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
+            <Navigation/>
             <Box sx={{width: '100%'}}>
-                {children || <Outlet />}
+                <Outlet />
             </Box>
         </Box>
     )

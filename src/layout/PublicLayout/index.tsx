@@ -1,17 +1,21 @@
 import { FC, ReactNode } from 'react'
 import PropTypes from 'prop-types'
 import { Outlet } from 'react-router-dom'
+import Navigation from '../Navigation'
 
 interface PublicLayoutProps {
     children?: ReactNode;
 }
 
-const PublicLayout: FC<PublicLayoutProps> = ({ children }) => {
-    return <>{children || <Outlet />}</>
+const Index: FC<PublicLayoutProps> = ({ children }) => {
+    return <>
+        <Navigation/>
+        <Outlet />
+    </>
 }
 
-PublicLayout.propTypes = {
+Index.propTypes = {
     children: PropTypes.node
 }
 
-export default PublicLayout
+export default Index
