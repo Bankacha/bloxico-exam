@@ -28,6 +28,8 @@ const DisplayAssetsContent = () => {
     if (isLoading) {
         return <Loader/>
     }
+
+    // Displaying Error page with ability to reload assets
     if (hasError) {
         return <ErrorPage text="Error while loading assets." retry={() => dispatch(loadAssets(''))}/>
     }

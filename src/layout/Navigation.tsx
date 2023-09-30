@@ -6,17 +6,19 @@ import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 import {useSDK} from '@metamask/sdk-react'
 import {useNavigate} from 'react-router'
-import { useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
 import {logInUser, logOutUser} from '../store/slices/User'
 import {userLoggedIn} from '../store/selectors'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity'
 import {useAppDispatch} from '../store'
+import {toast} from 'react-toastify'
 
 const Navigation = () => {
     const dispatch = useAppDispatch()
     const isUserLoggedIn = useSelector(userLoggedIn)
     const {sdk} = useSDK()
     const navigate = useNavigate()
+    const notify = (msg: string) => toast.success(msg)
     const login = () => dispatch(logInUser())
     const logout = () => dispatch(logOutUser())
 
@@ -26,6 +28,7 @@ const Navigation = () => {
             if (!!accounts) {
                 login()
                 navigate('/')
+                notify('Wallet Connected')
             }
         } catch (err) {
             console.warn(`failed to connect..`, err)
@@ -35,6 +38,7 @@ const Navigation = () => {
     const disconnect = async () => {
         logout()
         navigate('/')
+        notify('Wallet Disconnected')
     }
 
     return (
@@ -43,7 +47,12 @@ const Navigation = () => {
                 <Toolbar sx={{display: 'flex', justifyContent: 'flex-end'}}>
                     {
                         isUserLoggedIn ? (
-                            <Box sx={{display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center'}}>
+                            <Box sx={{
+                                display: 'flex',
+                                width: '100%',
+                                justifyContent: 'space-between',
+                                alignItems: 'center'
+                            }}>
                                 <IconButton
                                     size="large"
                                     edge="start"
@@ -54,10 +63,12 @@ const Navigation = () => {
                                 >
                                     <PermIdentityIcon fontSize={'large'}/>
                                 </IconButton>
-                                <Button  variant={'outlined'} onClick={disconnect} color="inherit">Disconnect Wallet</Button>
+                                <Button variant={'outlined'} onClick={disconnect} color="inherit">Disconnect
+                                    Wallet</Button>
                             </Box>
                         ) : (
-                            <Button sx={{width: '190px'}} variant={'outlined'} onClick={connect} color="inherit">Connect Wallet</Button>
+                            <Button sx={{width: '190px'}} variant={'outlined'} onClick={connect} color="inherit">Connect
+                                Wallet</Button>
                         )
                     }
                 </Toolbar>

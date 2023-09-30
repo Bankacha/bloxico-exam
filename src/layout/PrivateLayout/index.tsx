@@ -12,6 +12,7 @@ interface PrivateLayoutProps {
 const PrivateLayout: FC<PrivateLayoutProps> = () => {
     const isUserLoggedIn = useSelector(userLoggedIn)
 
+    // Redirecting not logged-in users to the Home page
     if (!isUserLoggedIn) {
         return <Navigate to="/" />
     }

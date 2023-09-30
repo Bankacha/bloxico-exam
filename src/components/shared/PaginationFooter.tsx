@@ -31,16 +31,15 @@ const PaginationFooter = () => {
             <FormControl sx={{width: '70px'}}>
                 <InputLabel>Limit</InputLabel>
                 <Select
-                    id="demo-simple-select"
                     value={limit}
-                    label="Age"
+                    label="Limit"
                     onChange={(e) => dispatch(updateLimit(e.target.value as number))}
                     sx={{'& .MuiSelect-outlined': {padding:'10px'}}}
                 >
                     <MenuItem value={5}>5</MenuItem>
                     <MenuItem value={10}>10</MenuItem>
                     <MenuItem value={15}>15</MenuItem>
-                    <MenuItem value={15}>20</MenuItem>
+                    <MenuItem value={20}>20</MenuItem>
                 </Select>
             </FormControl>
             <Box sx={{

@@ -32,7 +32,7 @@ export const assetsSlice = createSlice({
 
 export const {setAssets, setLoading, setError, setlimit} = assetsSlice.actions
 
-// LOADING ASSETS AND HANDLE PREV/NEXT PAGE
+// Loading assets and handling next/previous pages
 export const loadAssets = createAsyncThunk('asset/LoadAssets', async (action: string, {getState, dispatch}) => {
     const {assets: {previous, next, limit, isLoading}} = getState() as RootStore
     const isNextAction = action === 'NEXT'
@@ -82,7 +82,7 @@ export const loadPreviousAssets = createAsyncThunk('asset/LoadPreviousAssets', a
     dispatch(loadAssets('PREV'))
 })
 
-// Setting pagination limit
+// Setting asset limit load by page
 export const updateLimit = createAsyncThunk('asset/UpdateLimit', async (action:number, {dispatch}) => {
     dispatch(setlimit(action))
     dispatch(loadAssets(''))
