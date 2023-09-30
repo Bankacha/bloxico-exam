@@ -42,7 +42,7 @@ const Navigation = () => {
     }
 
     return (
-        <Box sx={{flexGrow: 1}}>
+        <Box sx={{flexGrow: 1, position: 'fixed', width: '100%', boxShadow: '0px 3px 11px 0px rgba(0,0,0,0.57)'}}>
             <AppBar position="static">
                 <Toolbar sx={{display: 'flex', justifyContent: 'flex-end'}}>
                     {

@@ -35,11 +35,11 @@ const DisplayAssetsContent = () => {
     }
 
     return (
-        <Box sx={{paddingBottom: '70px'}}>
+        <Box sx={{paddingBottom: '20px'}}>
             {
                 assets && !isLoading && (
                     <Box sx={{
-                        padding: {xs: '30px 20px', sm: '40px 30px', lg: '60px 30px'},
+                        padding: {xs: '90px 20px', sm: '100px 30px'},
                         boxSizing: 'border-box',
                         height: '100%',
                         display: 'flex',

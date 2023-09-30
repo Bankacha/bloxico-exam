@@ -18,7 +18,7 @@ const PaginationFooter = () => {
             width: '100%',
             boxSizing: 'border-box',
             bottom: 0,
-            padding: '20px 20px',
+            padding: '16px 20px',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
